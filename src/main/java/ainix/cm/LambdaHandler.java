@@ -11,7 +11,8 @@ public class LambdaHandler implements RequestHandler<APIGatewayProxyRequestEvent
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent apiGatewayProxyRequestEvent, Context context) {
         EmployeService employeService=new EmployeService();
-        switch (apiGatewayProxyRequestEvent.getHttpMethod()){
+        String httpMethod= apiGatewayProxyRequestEvent.getHttpMethod();
+        switch (httpMethod){
             case "POST":
                 //Todo : save employee
                 return employeService.saveEmployee(apiGatewayProxyRequestEvent, context);
